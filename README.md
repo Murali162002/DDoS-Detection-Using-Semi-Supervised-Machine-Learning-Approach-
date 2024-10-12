@@ -1,4 +1,4 @@
-# Semi-Supervised-Machine-Learning-Approach-For-DDoS-Detection
+# DDoS Detection Using Semi-Supervised Machine Learning Approach
 
  Even though advanced Machine Learning (ML) techniques have been adopted for DDoS detection, the attack remains a
  major threat of the Internet. Most of the existing ML-based DDoS detection approaches are under two categories: supervised
