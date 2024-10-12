@@ -1,0 +1,63 @@
+{% extends 'design.html' %}
+{% block userblock %}
+{% load staticfiles %}
+<style>
+     .sidemenu{
+    border-style:solid;
+    border-width:1px;
+    width:300px;
+    height:450px;
+    float:left;
+    position:fixed;
+    right:1em;
+    top:10em;
+    background:rgba(0,0,255,0.8);
+}
+
+</style>
+
+<script>
+window.onload = function() {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "MALWARE ANALYSIS"
+	},
+	data: [{
+	{% if chart_type == "bar" %}
+		type: "bar",
+	{% elif chart_type == "spline" %}
+		type: "spline",
+	{% elif chart_type == "spline" %}
+		type: "spline",
+	{% endif %}
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label} {y}",
+		dataPoints: [
+		{% for o in objects %}
+			{y: {{o.dcount}}, label: "{{o.attack_result}}"},
+		{% endfor %}
+		]
+	}]
+});
+chart.render();
+
+}
+
+</script>
+
+<div class="sidemenu">
+    <h2 style="color:white;margin-left:60px;margin-top:80px"><a href="{% url 'chart_page' 'spline' %}" style="color:white;text-decoration:none">SPLINE CHAERT</a></h2>
+    <h2 style="color:white;margin-left:60px;margin-top:100px;"><a href="{% url 'chart_page' 'bar' %}" style="color:white;text-decoration:none">BAR CHART</a></h2>
+    <h2 style="color:white;margin-left:60px;margin-top:100px;"><a href="{% url 'chart_page' 'coloumn' %}"style="color:white;text-decoration:none">COLOUMN CHART</a></h2>
+</div>
+<div id="chartContainer" class="graph" style="height: 370px; width: 920px; margin: 0px auto;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+
+
+{% endblock %}

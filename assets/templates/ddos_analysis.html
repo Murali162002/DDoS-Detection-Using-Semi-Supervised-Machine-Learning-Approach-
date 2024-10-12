@@ -1,0 +1,73 @@
+{% extends 'design.html' %}
+{% block userblock %}
+{% load staticfiles %}
+
+<style>
+    .userdetails{
+     position: absolute;
+    margin-top:50px;
+    left:90px;
+    padding:5px;
+    height:480px;
+    width:1030px;
+    overflow:;
+    float:left;
+    }
+    .userdetails table{
+    width:40em;
+    text-align:center;
+
+    border-spacing:1px;
+    background:;
+}
+
+
+.userdetails table tr th{
+background:rgb(0,100,0);
+padding:5px;
+}
+.userdetails table tr td{
+background:rgba(60,179,113,.2);
+padding:5px;
+}
+.userdetails table tr:hover td{
+background:rgba(50,205,50,.5);
+}
+.sideimage{
+border-style:solid;
+ border-width:1px;
+ height:380px;
+ width:400px;
+ margin-top:35px;
+ margin-left:830px;
+ background: url("{% static 'images.png' %}");
+ background-size: 100%100%;
+float:left;
+}
+
+</style>
+<div class="userdetails">
+<table>
+    <tr>
+        <th>MALWARE NAME</th>
+        <th>NETWORK TRAFIC POSSITION</th>
+
+    </tr>
+    {% for i in objects %}
+    <tr>
+    <td style="color:orange">{{i.attack_result}}</td>
+    <td style="color:pink">{{i.dcount}}</td>
+
+
+
+
+    </tr>
+    {% endfor %}
+</table>
+</div>
+<div class="sideimage"></div>
+
+
+
+
+{% endblock %}

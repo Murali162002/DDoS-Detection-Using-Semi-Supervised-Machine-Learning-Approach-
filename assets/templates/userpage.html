@@ -1,0 +1,69 @@
+{% extends 'design.html' %}
+{% block userblock %}
+{% load staticfiles %}
+
+<style>
+    .userdetails{
+     position: absolute;
+    margin-top:-20px;
+    left:90px;
+    padding:5px;
+    height:480px;
+    width:1030px;
+    overflow:scroll;
+    float:left;
+    }
+    .userdetails table{
+    width:70em;
+    text-align:center;
+
+    border-spacing:1px;
+    background:;
+}
+
+
+.userdetails table tr th{
+background:rgb(0,100,0);
+padding:5px;
+}
+.userdetails table tr td{
+background:rgba(60,179,113,.2);
+padding:5px;
+}
+.userdetails table tr:hover td{
+background:rgba(50,205,50,.5);
+}
+.sideimage{
+border-style:solid;
+ border-width:1px;
+ height:380px;
+ width:360px;
+ margin-top:50px;
+ margin-left:830px;
+ background: url("{% static 'images13.png' %}");
+ background-size: 100%100%;
+float:left;
+}
+</style>
+<div class="userdetails">
+<table>
+    <tr>
+        <th style="color:yellow">DATA</th>
+        <th style="color:yellow">ATTACK RESULTS</th>
+
+    </tr>
+    {% for i in object %}
+    <tr>
+    <td style="color:white">{{i.ddos_data}}</td>
+    <td style="color:pink">{{i.attack_result}}</td>
+
+
+
+
+    </tr>
+    {% endfor %}
+</table>
+</div>
+<div class=""></div>
+
+{% endblock %}
